@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Sach>
+@{
+    ViewData["Title"] = "Danh sách sách";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Danh sách sách</h2>
+    <a class="btn btn-success" asp-action="Create">Thêm sách mới</a>
+</div>
+
+<form method="get" class="row g-2 mb-3">
+    <div class="col-md-6">
+        <input type="text" name="tuKhoa" value="@ViewData["TuKhoa"]" class="form-control" placeholder="Tìm theo tiêu đề hoặc tác giả" />
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+        <a class="btn btn-secondary" asp-action="Index">Xóa lọc</a>
+    </div>
+</form>
+
+<table class="table table-bordered table-hover align-middle">
+    <thead class="table-light">
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.TieuDe)</th>
+            <th>@Html.DisplayNameFor(m => m.TacGia)</th>
+            <th>@Html.DisplayNameFor(m => m.TheLoai)</th>
+            <th>@Html.DisplayNameFor(m => m.NamXuatBan)</th>
+            <th>@Html.DisplayNameFor(m => m.Gia)</th>
+            <th>@Html.DisplayNameFor(m => m.SoLuong)</th>
+            <th style="width:220px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TieuDe</td>
+                <td>@item.TacGia</td>
+                <td>@item.TheLoai</td>
+                <td>@item.NamXuatBan</td>
+                <td>@item.Gia.ToString("N0")</td>
+                <td>@item.SoLuong</td>
+                <td>
+                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.Id">Chi tiết</a>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Sửa</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
+                </td>
+            </tr>
+        }
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="7" class="text-center text-muted">Không có dữ liệu</td>
+            </tr>
+        }
+    </tbody>
+</table>

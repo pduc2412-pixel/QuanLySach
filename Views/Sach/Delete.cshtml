@@ -1,0 +1,28 @@
+﻿@model Sach
+@{
+    ViewData["Title"] = "Xóa sách";
+}
+
+<h2>Xóa sách</h2>
+<p class="text-danger">Bạn có chắc chắn muốn xóa cuốn sách này?</p>
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.TieuDe)</dt>
+    <dd class="col-sm-9">@Model.TieuDe</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.TacGia)</dt>
+    <dd class="col-sm-9">@Model.TacGia</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.TheLoai)</dt>
+    <dd class="col-sm-9">@Model.TheLoai</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.NamXuatBan)</dt>
+    <dd class="col-sm-9">@Model.NamXuatBan</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Gia)</dt>
+    <dd class="col-sm-9">@Model.Gia.ToString("N0")</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.SoLuong)</dt>
+    <dd class="col-sm-9">@Model.SoLuong</dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a class="btn btn-secondary" asp-action="Index">Quay lại</a>
+</form>
