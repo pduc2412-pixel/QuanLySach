@@ -26,3 +26,18 @@ BEGIN
     SET IDENTITY_INSERT dbo.Sachs OFF;
 END
 GO
+GO
+
+IF OBJECT_ID(N'dbo.SachHinhAnhs', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.SachHinhAnhs (
+        Id INT IDENTITY(1,1) NOT NULL,
+        SachId INT NOT NULL,
+        DuongDan NVARCHAR(MAX) NOT NULL,
+        CONSTRAINT PK_SachHinhAnhs PRIMARY KEY (Id),
+        CONSTRAINT FK_SachHinhAnhs_Sachs_SachId FOREIGN KEY (SachId) REFERENCES dbo.Sachs (Id) ON DELETE CASCADE
+    );
+
+    CREATE INDEX IX_SachHinhAnhs_SachId ON dbo.SachHinhAnhs (SachId);
+END
+GO
