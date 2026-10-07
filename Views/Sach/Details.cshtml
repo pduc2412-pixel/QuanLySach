@@ -4,6 +4,15 @@
 }
 
 <h2>Chi tiết sách</h2>
+@if (Model.HinhAnhs.Any())
+{
+    <div class="d-flex flex-wrap gap-3 mb-3">
+        @foreach (var anh in Model.HinhAnhs)
+        {
+            <img src="@anh.DuongDan" alt="@Model.TieuDe" style="height:160px;width:auto" class="border rounded" />
+        }
+    </div>
+}
 
 <dl class="row">
     <dt class="col-sm-3">@Html.DisplayNameFor(m => m.TieuDe)</dt>

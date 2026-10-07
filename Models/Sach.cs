@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace QuanLySach.Models;
 
@@ -33,4 +34,7 @@ public class Sach
     [Range(0, 100000, ErrorMessage = "Số lượng không hợp lệ")]
     [Display(Name = "Số lượng")]
     public int SoLuong { get; set; }
+
+    [ValidateNever]
+    public List<SachHinhAnh> HinhAnhs { get; set; } = new();
 }

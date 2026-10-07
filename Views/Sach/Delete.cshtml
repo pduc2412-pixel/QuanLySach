@@ -5,6 +5,15 @@
 
 <h2>Xóa sách</h2>
 <p class="text-danger">Bạn có chắc chắn muốn xóa cuốn sách này?</p>
+@if (Model.HinhAnhs.Any())
+{
+    <div class="d-flex flex-wrap gap-3 mb-3">
+        @foreach (var anh in Model.HinhAnhs)
+        {
+            <img src="@anh.DuongDan" alt="@Model.TieuDe" style="height:160px;width:auto" class="border rounded" />
+        }
+    </div>
+}
 
 <dl class="row">
     <dt class="col-sm-3">@Html.DisplayNameFor(m => m.TieuDe)</dt>

@@ -2,6 +2,7 @@
 using QuanLySach.Data;
 using QuanLySach.Middlewares;
 
+Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads"));
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
